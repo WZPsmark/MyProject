@@ -1,1 +1,19 @@
-fghfghgfhf
+ ssh-keygen -t rsa -C "your_email@youremail.com"   配置钥匙
+git init   建仓库
+
+1 $ git config --global user.name "your name"
+2 $ git config --global user.email "your_email@youremail.com"  设置用户名
+
+$ git remote add origin git@github.com:WZPsmark/MyProject.git 添加远程地址
+
+$ git add read.txt   添加文件
+$ git commit -m "这是你commit的原因，写了方便你我他"  提交
+
+$ git push -u origin master   推送到github
+
+
+
+
+//拉数据
+
+$ git pull origin master  //拉数据

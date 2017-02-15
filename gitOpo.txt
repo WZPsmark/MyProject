@@ -1,0 +1,64 @@
+1、注册bitbucket用户
+登录bitbucket站点https://bitbucket.org/注册一个用户，注册后用户名为linjiqin，邮箱为linjiqin@dkhs.com。
+
+2、Create repository(仓库)
+登录bitbucket，点击“Create”按钮会出现一个Create a new repository页面，填写repository相关信息后，点击“Create repository”按钮创建repository，如下图所示：
+
+
+3、Ubuntu下git配置和使用
+3.1、安装SSH
+sudo apt-get install SSH
+
+3.2、安装git
+sudo apt-get install git
+
+3.3、初始化git，即创建一个本地仓库
+linjiqin@ubuntu:~$ mkdir /home/linjiqin/develop/git
+linjiqin@ubuntu:~$ cd /home/linjiqin/develop/git
+linjiqin@ubuntu:~/develop/git$ git init #初始化成功后，控制台提示“Initialized empty Git repository in /home/linjiqin/develop/git/.git/”
+
+3.4、生成一个data文 件，写入“hello git”，保存到本地仓库，在/home/linjiqin/develop/git目录下操作
+linjiqin@ubuntu:~/develop/git/.git$ echo "hello git" >> data
+linjiqin@ubuntu:~/develop/git/.git$ git add data #git add . 添加所有文件
+linjiqin@ubuntu:~/develop/git/.git$ git status
+
+3.4、设置用户名和邮箱
+linjiqin@ubuntu:~/develop/git/.git$ git config --global user.name "Lin Jinqin" #随便设置
+linjiqin@ubuntu:~/develop/git/.git$ git config --global user.email "linjiqin@dkhs.com" #bitbucket邮箱
+
+3.5、設置ssh
+3.5.1.在終端中運行ssh-keygen。
+3.5.2.然後一路enter，直接到結束。不要理會中間的輸入。
+3.5.3 打開用戶目錄下.ssh/id_rsa.pub文件，复制其內容。
+3.5.4.Bitbucket上點右上角的小頭像，然後選擇Manage account.
+3.5.5.左邊目錄選擇SSH Keys，然後選擇add key。將剛才复制的內容粘貼進去，保存。
+3.5.6.回到工程頁面，將使用的協議選擇为SSH。
+現在就可以使用SSH了。
+
+3.6、更新远程服务器
+linjiqin@ubuntu:~/develop/git$ git remote add ljq_web git@bitbucket.org:linjiqin/ljq_web.git #
+说明：
+若git@bitbucket.org:linjiqin/ljq_web.git路径有误，在/home/linjiqin/develop/git/.git/config里，把url = git@bitbucket.org:linjiqin/ljq_web.git改成相应的配置。
+linjiqin@ubuntu:~/develop/git$ git commit -m 'version 1.2.6'
+linjiqin@ubuntu:~/develop/git$ git push ljq_web master #上传文件到bitbucket.org，可通过站点查看是否上传成功
+
+################################################################
+
+git add -A
+git commit -m "dev login function"
+
+对于已经修改提交过的注释,如果需要修改,可以借助 git commit --amend 来进行
+
+ 
+
+#Clone远程版本库到本地
+git clone git@bitbucket.org:dkhsteam/dkhs_web.git
+
+用git remote set_url命令更换地址，例如：
+git remote set-url origin http://linjiqin@*****:7990/scm/dkhs/dkhs_web.git
+注：http://linjiqin@*****:7990/scm/dkhs/dkhs_web.git为新的仓库地址
+
+git恢复分支
+通过'git branch recover_branch(新分支) commit_id'来建立一个新的分支，这样，我们就把丢失的东西给恢复到了recover_branch分支上了，例如：
+git reflog #可以使用git reflog show或git log -g命令来查看所有的操作日志
+git branch feature/push_recover 0563bdc #feature/push_recover分支，0563bdc commit_id

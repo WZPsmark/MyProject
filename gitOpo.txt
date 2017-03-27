@@ -47,6 +47,9 @@ linjiqin@ubuntu:~/develop/git$ git push ljq_web master #ÉÏ´«ÎÄ¼şµ½bitbucket.org£
 git add -A
 git commit -m "dev login function"
 
+git commit -m
+git push -u origin master //Ìá½»ÖÁÍøÂç
+
 ¶ÔÓÚÒÑ¾­ĞŞ¸ÄÌá½»¹ıµÄ×¢ÊÍ,Èç¹ûĞèÒªĞŞ¸Ä,¿ÉÒÔ½èÖú git commit --amend À´½øĞĞ
 
  

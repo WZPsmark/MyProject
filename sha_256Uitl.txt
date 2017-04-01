@@ -1,0 +1,40 @@
+/**
+*SHA-256加密算法
+*
+*/
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+ 
+public class SHA256Encrypt {
+    
+    private static byte [] getHash(String password) {
+        MessageDigest digest = null ;
+        try {
+            digest = MessageDigest. getInstance( "SHA-256");
+        } catch (NoSuchAlgorithmException e1) {
+            e1.printStackTrace();
+        }
+        digest.reset();
+        return digest.digest(password.getBytes());
+    }
+ 
+    public static String bin2hex(String strForEncrypt) {
+        byte [] data = getHash(strForEncrypt);
+        return String.format( "%0" + (data.length * 2) + "X", new BigInteger(1, data));
+    }
+}
+
+
+
+
+当用作密码传输时 
+需做加盐处理
+
+
+String salt="asdfdsf";//一个比较特殊的字符串,比如yourname_www.baidu.com 等组合,密码字典几乎找不到的,不要用中文,避免编码干扰 
+return digest.digest((password+salt).getBytes());
+
+
+
